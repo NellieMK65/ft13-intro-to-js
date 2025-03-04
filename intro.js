@@ -92,4 +92,4 @@ console.log(lastName);
 // lastName = "New last name"
 
 // we cannot redeclare
-lastName = 'new name';
+// lastName = 'new name';
