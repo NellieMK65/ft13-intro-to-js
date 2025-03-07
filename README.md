@@ -5,3 +5,4 @@
 -   Boolean Expressions
 -   Statements (Selection & Repetition)
 -   Objects
+-   Functions

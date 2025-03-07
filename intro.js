@@ -54,7 +54,7 @@ num = 3 + 6;
 
 // NUM = 78
 
-console.log(NUM);
+console.log(num);
 
 // let keyword -> allows mutation of the value
 // allows reassigning of values
