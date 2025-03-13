@@ -29,6 +29,8 @@ const students = [
 	'Sharon',
 	['red', 'green', { colorName: 'blue' }],
 ];
+students.splice(2, 0, 'Bildad'); // this adds Bildad at position 2
+students.splice(2, 1); // now this deletes the item at position 2 since the count is 1
 console.log(students);
 
 // Accessing values inside any array
@@ -65,11 +67,11 @@ console.log(colors);
  */
 
 // 1. .push() -> add one ore more elements at the end of an array
-colors.push('green', 'blue');
+console.log(colors.push('green', 'blue'));
 console.log(colors);
 
 // 2. .unshift() -> add one or more elements at the beginning of an array
-colors.unshift('yellow', 'purple', 'red', 'red', 'red', 'blue', 'red');
+colors.unshift('yellow', 'purple');
 console.log(colors);
 
 /**
@@ -86,6 +88,64 @@ colors.shift();
 console.log(colors);
 
 // slice, splice
+/**
+ * Slice() -> nondestructive method (does not mutate the original array)
+ *
+ * Make a copy of the array
+ * Delete elements in the array
+ */
+
+// as long as no arguments are passed, the method will always makea copy
+const copyOfColors = colors.slice();
+console.log(copyOfColors);
+
+//spread operator (...) -> makes a copy too
+const secondCopyOfColors = [...colors];
+console.log(secondCopyOfColors);
+
+const deletedColors = colors.slice(1);
+console.log(deletedColors);
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const deletedNumbers = numbers.slice(3, 7);
+console.log(numbers);
+// console.log(deletedNumbers.unshift(1, 2 ,3))
+console.log(deletedNumbers);
+/**
+ * splice() -> destructive (mutates the original array)
+ *
+ * Deleted elements
+ * Add new element(s)
+ * Update the element(s)
+ */
+
+// 1. Deleting elements
+const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
+console.log(days);
+
+const deletedDays = days.splice(3, 3);
+console.log(deletedDays);
+console.log(days);
+
+// Adding element(s)
+// ! The second argument should always be 0
+days.splice(3, 0, 'Wed', 'Thur', 'Fri');
+console.log(days);
+
+const months = ['Jan', 'Feb', 'Mar'];
+months.splice(3, 0, 'April', 'May', 'Jun', 'Jun', 'Jun');
+console.log(months.length);
+months.splice(months.length, 0, 'July');
+months.splice(-2, 0, 'Aug');
+console.log(months);
+
+// updating, the second argument is usually 1,
+console.log(months.splice(2, 2, 'March', 'April'));
+// update Jan & Feb
+console.log(months.splice(0, 2, 'January', 'Febraury'));
+// update Jun
+console.log(months.splice(months.lastIndexOf('Jun'), 1, 'June'));
+console.log(months);
 
 // to get the total elements in an array, we use the .length
 console.log(colors.length);
@@ -93,6 +153,16 @@ console.log(colors.length);
 // get the position(index) of an element
 const position = colors.indexOf('yellow');
 console.log(position);
+
+const modifiedMonths = months.map((month) => {
+	if (month === 'Jun') {
+		return 'June';
+	} else {
+		return month;
+	}
+});
+
+console.log(modifiedMonths);
 
 const positionsOfRed = colors
 	.map((color, index) => {
